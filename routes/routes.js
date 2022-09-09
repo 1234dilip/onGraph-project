@@ -1,5 +1,7 @@
 const express = require('express');
 const controller = require('../controller/controller')
+const jwt = require('jsonwebtoken')
+const auth = require('../middleware/auth')
 
 const multer = require('multer')
 
@@ -19,18 +21,10 @@ const upload = multer({
     
 }).single("profile")
 
-
-
-
-
-router.post('/v1/createData',upload, controller.CreateData)
-
-
-
-
-
-
-
+router.post('/v1/loginUser', controller.loginUser)
+router.post('/v1/registerUser',upload,auth,controller.registerUser)
+router.get('/v1/getloginData',controller.loginData)
+router.get('/v1/getuserofDataByid/:id',controller.loginDatawithId)
 
 
 
