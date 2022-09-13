@@ -8,23 +8,21 @@ const multer = require('multer')
 const router = express.Router()
 
 const upload = multer({
-    storage:multer.diskStorage({
-    destination:function(req,file,cb){
-        cb(null,"uploads")
+    storage: multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, "uploads")
+        },
+        filename: function (req, file, cb) {
+            cb(null, file.fieldname + "-" + Date.now() + ".jpg")
+        }
+    })
+}).any()
 
-    },
-    filename:function(req,file,cb){
-        cb(null,file.fieldname + "-" + Date.now() + ".jpg")
-    }
-})
-    
-    
-}).single("profile")
 
 router.post('/v1/loginUser', controller.loginUser)
-router.post('/v1/registerUser',upload,auth,controller.registerUser)
-router.get('/v1/getloginData',controller.loginData)
-router.get('/v1/getuserofDataByid/:id',controller.loginDatawithId)
+router.post('/v1/registerUser', upload, auth, controller.registerUser)
+router.get('/v1/getloginData', controller.loginData)
+router.get('/v1/getuserofDataByid/:id', controller.loginDatawithId)
 
 
 
