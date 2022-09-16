@@ -1,71 +1,45 @@
 const mongoose = require('mongoose')
 
 const blogSchema = new mongoose.Schema({
-//     Author_id:{
-//         required:true,
-//         type:String
-//     },
-//     tittle:[{
-//         required:true,
-//         type:String
-//     }
+    Author_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user",
 
-// ],
-// discription:{
-//     required:true,
-//         type:String
-// },
-// DateCreated:{
-//     type: Date, default: Date.now 
-// },
-// DateModified:{
-//     required:true,
-//     type: Date, 
-// },
+    },
+    tittle: {
+
+        type: String
+    },
 
 
+    description: {
 
-// status:[
-//     {
-//    published: {
-//     required:true,
-//     type: String 
-//     },
-//     draft: {
-//         required:true,
-//         type: String 
-//         },
-// }
-// ],
-// limitedUser:[
-//     {
-//         userid:{
-//             required:true,
-//             type: String 
-//         },
-//         permissionId:{
-//             required:true,
-//             type: String 
-//         },
-//         readId:{
-//             required:true,
-//             type: String 
-//         },
-//     }
-// ],
-// Access:[
-//     {
-// privateLimited:{
-//     required:true,
-//     type: String 
-// },
-// publicLimited:{
-//     required:true,
-//     type: String 
-// }
-//     }
-// ]
-    
+        type: String
+    },
+    access: {
+        type: String
+    },
+    accessedUsers: [
+        String
+    ],
+    status: {
+        type: String
+    },
+    DateCreated: {
+        type: Date,
+    },
+    lastUpdate: {
+        required: true,
+
+        type: Date, default: Date.now
+    },
+
+   
+
+
+
+
+
 
 })
 
