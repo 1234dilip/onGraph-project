@@ -20,6 +20,9 @@ const upload = multer({
     })
 }).any()
 
+
+
+
 router.post('/v1/loginUser', controller.loginUser)
 router.post('/v1/registerUser', upload, controller.registerUser)
 router.get('/v1/getloginData', controller.loginData)
